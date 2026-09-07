@@ -4,7 +4,7 @@ import { getProductDetail } from "../../services/productService";
 import ProductOptions from "../../components/ProductOptions/ProductOptions";
 import "./ProductDetail.css";
 
-function ProductDetail() {
+function ProductDetail({setCartCount}) {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
 
@@ -30,24 +30,24 @@ function ProductDetail() {
               <ul>
                 <li><b>Marca:</b> {product.brand}</li>
                 <li><b>Modelo:</b> {product.model}</li>
-                <li><b>Precio:</b> {product.price} €</li>
-                <li><b>CPU:</b> {product.cpu}</li>
-                <li><b>RAM:</b> {product.ram}</li>
-                <li><b>Sistema Operativo:</b> {product.os}</li>
-                <li><b>Resolución:</b> {product.displayResolution}</li>
-                <li><b>Batería:</b> {product.battery}</li>
+                <li><b>Precio:</b> {product.price ? product.price + "€" : "Precio no disponible actualmente"} </li>
+                <li><b>CPU:</b> {product.cpu ? product.cpu : "CPU no especificada"}</li>
+                <li><b>RAM:</b> {product.ram ? product.ram : "RAM no especificada"}</li>
+                <li><b>Sistema Operativo:</b> {product.os ? product.os : "Sistema operativo no especificado"}</li>
+                <li><b>Resolución:</b> {product.displayResolution ? product.displayResolution : "Resolución no especificada"}</li>
+                <li><b>Batería:</b> {product.battery ? product.battery : "Bateria no especificada"}</li>
                 <li><b>Cámaras:</b>
                   <ul>
-                    <li>Principal: {product.primaryCamera.join(", ")}</li>
-                    <li>Secundaria: {product.secondaryCmera.join(", ")}</li>
+                    <li>Principal: {Array.isArray(product.primaryCamera) ? product.primaryCamera.join(", ") : product.primaryCamera}</li>
+                    <li>Secundaria: {Array.isArray(product.secondaryCmera) ? product.secondaryCmera.join(", ") : product.secondaryCmera}</li>
                   </ul>
                 </li>
-                <li><b>Dimensiones:</b> {product.dimentions}</li>
-                <li><b>Peso:</b> {product.weigth ? product.weigth : "Peso no especificado..."}</li>
+                <li><b>Dimensiones:</b> {product.dimentions ? product.dimentions : "Dimensiones no especificadas"}</li>
+                <li><b>Peso:</b> {product.weight ? product.weight : "Peso no especificado"}</li>
               </ul>
             </div>
 
-            <ProductOptions options={product.options} />
+            <ProductOptions options={product.options} productId={product.id} setCartCount={setCartCount}/>
           </div>
         </div>
       )}

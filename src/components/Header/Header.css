@@ -1,0 +1,59 @@
+.header {
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    background-color: #fff;
+}
+
+.header-content {
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+
+.header-brand {
+    text-decoration: none;
+    color: #222;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+}
+
+.breadcrumb a {
+    color: #555;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.header-cart {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        padding: 15px 20px;
+        gap: 15px;
+    }
+
+    .header-brand {
+        font-size: 20px;
+    }
+
+    .breadcrumb {
+        display: none;
+    }
+}

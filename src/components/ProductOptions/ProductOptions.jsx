@@ -1,13 +1,22 @@
 import "./ProductOptions.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { addToCart } from "../../services/productService";
 
-function ProductOptions({ options }) {
+function ProductOptions({ options, productId, setCartCount }) {
     const [color, setColor] = useState(
         options.colors.length === 1 ? options.colors[0].code : "",
     ); //Comienza en el unico code que recibe si solo recibe 1
     const [storage, setStorage] = useState(
         options.storages.length === 1 ? options.storages[0].code : "",
     );
+    const navigate = useNavigate();
+
+    async function handleAddToCart() {
+        const data = await addToCart(productId, color, storage);
+        setCartCount(data.count);
+        console.log(data);//Por alguna razon que desconozco la API siempre devuevle "{count:1}" asumo que no esta sumando items al carrito y que es parte de la funcionalidad de la API
+    }
 
     return (
         <div className="product-options">
@@ -39,12 +48,14 @@ function ProductOptions({ options }) {
                     </option>
                 ))}
             </select>
-            
-            <button>Añadir al carrito</button>
 
-            <button>Volver</button>
+            <button onClick={handleAddToCart}>Añadir al carrito</button>
+
+            <button onClick={() => navigate("/")}>Volver</button>
         </div>
     );
+
 }
+
 
 export default ProductOptions;
