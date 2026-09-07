@@ -1,11 +1,13 @@
 import "./ProductCard.css";
 
-function ProductCard({product}) {
+function ProductCard({ product }) {
   return (
     <article className="product-card">
-      <img src={product.image} alt={product.model}/>
-      <hr />
-      <div>
+      <div className="product-image">
+        <img src={product.image} alt={product.model} />
+      </div>
+
+      <div className="product-info">
         <h2>{product.brand}</h2>
         <h3>{product.model}</h3>
         <p>{product.price} €</p>

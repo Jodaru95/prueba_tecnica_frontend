@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./SearchBox.css";
 
 function SearchBox() {
   const [search, setSearch] = useState("");
@@ -6,6 +7,7 @@ function SearchBox() {
   return (
     <div>
       <input
+        className="search-input"
         type="text"
         value={search}
         onChange={(event) => setSearch(event.target.value)}
