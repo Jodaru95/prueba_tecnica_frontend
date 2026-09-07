@@ -15,7 +15,6 @@ function ProductOptions({ options, productId, setCartCount }) {
     async function handleAddToCart() {
         const data = await addToCart(productId, color, storage);
         setCartCount(data.count);
-        console.log(data);//Por alguna razon que desconozco la API siempre devuevle "{count:1}" asumo que no esta sumando items al carrito y que es parte de la funcionalidad de la API
     }
 
     return (
