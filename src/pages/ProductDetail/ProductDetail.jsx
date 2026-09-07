@@ -16,7 +16,7 @@ function ProductDetail({setCartCount}) {
 
     loadProduct();
   }, [id]);
-  console.log(product);
+  
   return (
     <div className="product-detail">
       {product && (
