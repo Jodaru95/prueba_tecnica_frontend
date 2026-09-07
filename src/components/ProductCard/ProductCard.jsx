@@ -4,7 +4,7 @@ function ProductCard({ product }) {
   return (
     <article className="product-card">
       <div className="product-image">
-        <img src={product.image} alt={product.model} />
+        <img src={product.imgUrl} alt={product.model} />
       </div>
 
       <div className="product-info">
