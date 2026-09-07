@@ -33,6 +33,18 @@ export async function getProducts() {
 }
 
 export async function getProductDetail(id) {
+    const cacheKey = "product_" + id;
+    const cached = localStorage.getItem(cacheKey);
+
+    if (cached) {
+        const now = Date.now();
+        const cache = JSON.parse(cached);
+
+        if (now - cache.timestamp < CACHE_DURATION) {
+            return cache.data;
+        }
+    }
+
     const response = await fetch(API_URL + '/api/product/' + id);
 
     if (!response.ok) {
@@ -40,6 +52,12 @@ export async function getProductDetail(id) {
     }
 
     const data = await response.json();
+
+    const cache = {
+        data: data,
+        timestamp: Date.now()
+    };
+    localStorage.setItem(cacheKey, JSON.stringify(cache));
     return data;
 }
 
