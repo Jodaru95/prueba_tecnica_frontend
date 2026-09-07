@@ -9,9 +9,25 @@
     justify-content: flex-end;
 }
 
+@media (max-width: 768px) {
+    .search-container {
+        justify-content: stretch;
+    }
+
+    .search-input {
+        width: 100%;
+    }
+}
+
 .product-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
